@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Add receipt
+{% endblock %}
+
+{% block main %}
+<h3>New receipt</h3>
+    <form action="/receipt" method="post">
+        
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="date" type="date">
+
+        <input autocomplete="off" class="form-control mx-auto w-auto" name="company"  placeholder="Company" type="text">
+
+        <select id="origin" name="home_code" class="form-select short-select">
+            <option value="" disabled {% if not origin %}selected{% endif %}>-- choose a currency --</option>
+            {% for code in currency_code %}
+                <option value="{{code}}" {% if origin == code %}selected{% endif %}>{{code}}({{currency_code[code]}})</option>
+            {% endfor %}
+        </select>
+
+        <select id="destination" name="travel_code" class="form-select short-select">
+            <option value="" disabled {% if not destination %}selected{% endif %}>-- choose a currency --</option>
+            {% for code in currency_code %}
+                <option value="{{code}}" {% if destination == code %}selected{% endif %}>{{code}}({{currency_code[code]}})</option>
+            {% endfor %}
+        </select>
+
+        <input autocomplete="off" class="form-control mx-auto w-auto" name="payment"  placeholder="Payment method" type="text">
+        
+        <button class="btn btn-primary" type="submit">Add items</button>
+    </form>
+
+{% endblock %}

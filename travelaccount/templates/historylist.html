@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+History
+{% endblock %}
+
+{% block main %}
+    {% if trip %} 
+        <h3>History</h3> 
+    
+        <ul>
+            {% for t in trip %}
+                <li><a href="{{url_for('history',trip_id=t['id'])}}" class="old_trip_name">{{t["name"]}}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}

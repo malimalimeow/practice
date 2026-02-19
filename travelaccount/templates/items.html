@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Add items
+{% endblock %}
+
+{% block main %}
+    <form action="/items" method="post">
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="name" placeholder="Items name" type="text">
+        <input autocomplete="off" class="form-control mx-auto w-auto" name="quantity" value="1" type="text">
+        <input autocomplete="off" class="form-control mx-auto w-auto" name="cost" placeholder="Cost" type="text">
+        <button class="btn btn-primary" name="add">Add next item</button>
+        <button class="btn btn-primary" name="new">New receipt</button>
+    </form>
+{% endblock %}

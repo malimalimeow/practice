@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Rate
+{% endblock %}
+
+{% block main %}
+<form action="/rate" method="post">
+<label for="origin">Origin Currency code</label>
+<select id="origin" name="origin" class="form-select short-select">
+    <option value="" disabled {% if not origin %}selected{% endif %}>-- choose a currency --</option>
+    {% for code in currency_code %}
+        <option value="{{code}}" {% if origin == code %}selected{% endif %}>{{code}}({{currency_code[code]}})</option>
+    {% endfor %}
+</select>
+
+<label for="destination">Destination Currency code</label>
+<select id="destination" name="destination" class="form-select short-select">
+    <option value="" disabled {% if not destination %}selected{% endif %}>-- choose a currency --</option>
+    {% for code in currency_code %}
+        <option value="{{code}}" {% if destination == code %}selected{% endif %}>{{code}}({{currency_code[code]}})</option>
+    {% endfor %}
+</select>
+
+<label for="amount">exchange amount</label>
+
+    <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="amount" placeholder="Amount" type="text">
+    <button type="submit" class="btn btn-primary">Exchange</button>
+</form>
+
+<h3>{{symbol}}{{after_exchange}}</h3>
+
+
+{% endblock %}

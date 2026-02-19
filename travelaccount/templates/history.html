@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+history
+{% endblock %}
+
+{% block main %}
+<form action="/history/{{trip_id}}" method="post">
+    <button class="btn btn_primary">add receipt</button>
+</form>
+
+<h3>{{trip_name}}</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Company</th>
+            <th scope="col">Items</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Amonunt</th>
+            <th scope="col">Exchanged amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for h in history %}
+        <tr>
+            <td>{{h["date"]}}</td>
+            <td>{{h["company"]}}</td>
+            <td>{{h["name"]}}</td>
+            <td>{{h["quantity"]}}</td>
+            <td>{{h["cost"]}}</td>
+            <td>{{ h["cost"] * h["rate"] }}</td>
+            {% endfor %}
+
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
