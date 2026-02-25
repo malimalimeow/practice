@@ -1,10 +1,18 @@
 print("Welcome to my To-Do List!")
+import os
 import json
 
 todo=[]
+filename="todo.json"
 
-with open('todo.json', 'r') as json_file:
-   todo = json.load(json_file)
+if not os.path.exists(filename):
+   default_data={}
+   with open('todo.json', 'w') as json_file:
+      json.dump(default_data, json_file, indent=2)
+   
+else:
+   with open('todo.json', 'r') as json_file:
+      todo = json.load(json_file)
 
 def todo_():
 
